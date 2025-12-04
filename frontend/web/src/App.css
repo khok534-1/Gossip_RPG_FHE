@@ -1,0 +1,347 @@
+/* App.css */
+:root {
+  --primary-color: #e63946;
+  --secondary-color: #1d3557;
+  --background-color: #000;
+  --text-color: #fff;
+  --card-bg: #1a1a1a;
+  --border-color: #333;
+  --success-color: #4CAF50;
+  --warning-color: #FFC107;
+  --danger-color: #F44336;
+  --pixel-size: 4px;
+}
+
+body {
+  margin: 0;
+  font-family: 'Press Start 2P', cursive;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Pixel theme styles */
+.pixel-theme {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+.pixel-card {
+  background-color: var(--card-bg);
+  border: var(--pixel-size) solid var(--primary-color);
+  padding: 16px;
+  margin-bottom: 16px;
+  position: relative;
+  box-shadow: 4px 4px 0 rgba(0,0,0,0.2);
+}
+
+.pixel-card::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border: 2px solid var(--secondary-color);
+  pointer-events: none;
+}
+
+.pixel-button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 12px;
+  cursor: pointer;
+  margin: 4px;
+  position: relative;
+  box-shadow: 4px 4px 0 rgba(0,0,0,0.2);
+  transition: all 0.1s;
+}
+
+.pixel-button:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 rgba(0,0,0,0.2);
+}
+
+.pixel-button:active {
+  transform: translate(4px, 4px);
+  box-shadow: none;
+}
+
+.pixel-button.primary {
+  background-color: var(--secondary-color);
+}
+
+.pixel-input, .pixel-select {
+  background-color: var(--card-bg);
+  border: var(--pixel-size) solid var(--primary-color);
+  padding: 8px;
+  font-family: 'Press Start 2P', cursive;
+  color: var(--text-color);
+  margin: 4px 0;
+  width: 100%;
+}
+
+.pixel-input:focus, .pixel-select:focus {
+  outline: none;
+  border-color: var(--secondary-color);
+}
+
+.pixel-slider {
+  width: 100%;
+  height: 8px;
+  -webkit-appearance: none;
+  background: var(--card-bg);
+  border: var(--pixel-size) solid var(--primary-color);
+  margin: 16px 0;
+}
+
+.pixel-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  background: var(--primary-color);
+  cursor: pointer;
+}
+
+/* Layout styles */
+.app-header {
+  background-color: var(--primary-color);
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: var(--pixel-size) solid var(--secondary-color);
+}
+
+.app-header .logo h1 {
+  margin: 0;
+  font-size: 24px;
+  color: white;
+}
+
+.main-content {
+  padding: 16px;
+  flex: 1;
+}
+
+.dashboard-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.gossip-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+}
+
+.gossip-card {
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.gossip-card:hover {
+  transform: translateY(-4px);
+}
+
+.gossip-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.gossip-npc {
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+.gossip-category {
+  background-color: var(--secondary-color);
+  padding: 2px 8px;
+  font-size: 12px;
+}
+
+.gossip-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  font-size: 12px;
+}
+
+.gossip-date {
+  opacity: 0.7;
+}
+
+.gossip-value {
+  font-weight: bold;
+}
+
+/* Reputation bar */
+.reputation-bar-container {
+  margin: 16px 0;
+}
+
+.reputation-bar-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+
+.reputation-bar {
+  height: 20px;
+  background-color: var(--card-bg);
+  border: var(--pixel-size) solid var(--border-color);
+  position: relative;
+}
+
+.reputation-fill {
+  height: 100%;
+  transition: width 0.5s ease;
+}
+
+.reputation-value {
+  text-align: center;
+  font-size: 24px;
+  margin-top: 8px;
+  font-weight: bold;
+}
+
+.reputation-status {
+  text-align: center;
+  font-size: 18px;
+  margin-top: 8px;
+  text-transform: uppercase;
+}
+
+/* Modal styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.create-modal, .detail-modal {
+  width: 90%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.modal-header h2 {
+  margin: 0;
+}
+
+.close-modal {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: var(--text-color);
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 16px;
+}
+
+/* Loading spinner */
+.pixel-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid var(--primary-color);
+  border-top: 4px solid transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 16px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Transaction modal */
+.transaction-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1001;
+}
+
+.transaction-content {
+  padding: 32px;
+  text-align: center;
+}
+
+.transaction-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.transaction-icon.success {
+  color: var(--success-color);
+}
+
+.transaction-icon.error {
+  color: var(--danger-color);
+}
+
+/* History section */
+.history-section {
+  margin-top: 32px;
+}
+
+.history-list {
+  max-height: 200px;
+  overflow-y: auto;
+  font-size: 12px;
+  font-family: monospace;
+}
+
+.history-entry {
+  padding: 4px 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .dashboard-section {
+    grid-template-columns: 1fr;
+  }
+  
+  .gossip-grid {
+    grid-template-columns: 1fr;
+  }
+}
